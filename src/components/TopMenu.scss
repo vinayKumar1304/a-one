@@ -1,0 +1,20 @@
+.top-menu{
+    color: #fff;
+    & a {
+        color: #fff;
+    }
+    & .login-menu {
+        & .dropdown-menu{
+            padding: 0;
+            & .dropdown-item {
+                padding:5px 10px;
+                & a {
+                    padding-left: 0;
+                    padding-right: 0;
+                    color: #868686;
+                    &:hover, &:focus {color:#d81515}
+                }
+            }
+      }
+    }
+}
