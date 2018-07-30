@@ -35,4 +35,4 @@ import Register from '../components/Register'
     Selectors are composable. They can be used as input to other selectors.
     https://github.com/reactjs/reselect    */
 
-export default RegisterForm;
+export default Register;

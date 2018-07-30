@@ -41,7 +41,7 @@ class TopMenu extends React.Component {
             <NavItem>
               <NavLink href="/about-us">About Us</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Services
                 </DropdownToggle>
@@ -57,7 +57,7 @@ class TopMenu extends React.Component {
                   Reset
                   </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <NavItem>
               <NavLink href="/contact">Contact Us</NavLink>
             </NavItem>
@@ -65,7 +65,7 @@ class TopMenu extends React.Component {
               <NavLink href="/login">Login</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="" onClick={this.showRegisterationForm}>Register</NavLink>
+              <NavLink href="/Register">Register</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

@@ -7,9 +7,9 @@ export const UserLogin = ({ counter, increment, doubleAsync }) => (
   </div>
 )
 UserLogin.propTypes = {
-  // counter: PropTypes.number.isRequired,
-  // increment: PropTypes.func.isRequired,
-  // doubleAsync: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  doubleAsync: PropTypes.func.isRequired,
 }
 
 export default UserLogin

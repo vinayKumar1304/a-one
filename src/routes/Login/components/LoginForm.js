@@ -29,9 +29,9 @@ class LoginForm extends React.Component {
     return (
       <div className="container">
         <Row>
-          <div className='col-12 col-sm-12 col-xl-12 login-box'>
-            <h4 className='title col-12 col-sm-12 col-xl-12'><span>Log in or Register</span></h4>
-            <Form className='mt-2' onSubmit={handleSubmit}>
+          <div className='col-12 col-sm-6 col-md-6 login-box mx-auto'>
+            <h4 className='title col-12 col-sm-12 col-xl-12 text-center mt-3 mb-2'><span>Log in</span></h4>
+            <Form onSubmit={handleSubmit}>
               <div className='col-12 col-sm-12 col-xl-12 box-bg py-3'>
                 <Row>
                   <Col className='text-center col-12 col-sm-12 col-xl-12'>
@@ -80,8 +80,8 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
-//   handleSubmit: PropTypes.func.isRequired,
-//   submitting: PropTypes.bool
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool
 };
 
 LoginForm.contextTypes = {

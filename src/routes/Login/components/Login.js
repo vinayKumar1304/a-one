@@ -13,7 +13,7 @@ class Login extends React.Component {
     // this.saveLoginDetail = this.saveLoginDetail.bind(this);
     // this.register = this.register.bind(this);
     // // this.AdminLogin = this.AdminLogin.bind(this);
-    // // this.UserLogin = this.UserLogin.bind(this);
+    this.UserLogin = this.UserLogin.bind(this);
     // this.contactNumberType = this.contactNumberType.bind(this);
     this.showRegisterationForm = this.showRegisterationForm.bind(this);
     // this.showFacebookRegisterForm = this.showFacebookRegisterForm.bind(this);
@@ -68,7 +68,7 @@ class Login extends React.Component {
           </Row>               
         }
         { this.state.page === 'login' && 
-          <div className='col-12 col-sm-12 col-xl-12 login-box mb-3 main-wrapper content-wrapper'>
+          <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
           <LoginForm
             {...this.props}
             // handleSubmit={this.props.handleSubmit(this.saveLoginDetail)}
