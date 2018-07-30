@@ -21,19 +21,19 @@ const mapStateToProps = (state) => {
   return({
     // lang: state.i18nState.lang,
     // loader: state.app.loader,
-    showRegisterForm: state.Login.showRegisterForm,
-  	showFacebookForm: state.Login.showFacebookForm,
-  	contactType: state.Login.contactType,
-  	fetching: state.Login.fetching,
-  	showVerifyForm: state.Login.showVerifyForm,
-  	loginDetail: state.Login.loginDetail,
-  	mail: state.Login.mail,
-    verifying: state.Login.verifying,
-    accountVerifiedDetail: state.Login.accountVerifiedDetail,
-    userRegistrationDetail: state.Login.userRegistrationDetail,
-    activationCodeDetail: state.Login.activationCodeDetail,
-    showAlert: state.Login.showAlert,
-    alertMessage: state.Login.alertMessage
+    // showRegisterForm: state.Login.showRegisterForm,
+  	// showFacebookForm: state.Login.showFacebookForm,
+  	// contactType: state.Login.contactType,
+  	// fetching: state.Login.fetching,
+  	// showVerifyForm: state.Login.showVerifyForm,
+  	// loginDetail: state.Login.loginDetail,
+  	// mail: state.Login.mail,
+    // verifying: state.Login.verifying,
+    // accountVerifiedDetail: state.Login.accountVerifiedDetail,
+    // userRegistrationDetail: state.Login.userRegistrationDetail,
+    // activationCodeDetail: state.Login.activationCodeDetail,
+    // showAlert: state.Login.showAlert,
+    // alertMessage: state.Login.alertMessage
   });
 };
 

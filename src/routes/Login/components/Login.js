@@ -13,9 +13,9 @@ class Login extends React.Component {
     // this.saveLoginDetail = this.saveLoginDetail.bind(this);
     // this.register = this.register.bind(this);
     // // this.AdminLogin = this.AdminLogin.bind(this);
-    this.UserLogin = this.UserLogin.bind(this);
+    // this.UserLogin = this.UserLogin.bind(this);
     // this.contactNumberType = this.contactNumberType.bind(this);
-    this.showRegisterationForm = this.showRegisterationForm.bind(this);
+    // this.showRegisterationForm = this.showRegisterationForm.bind(this);
     // this.showFacebookRegisterForm = this.showFacebookRegisterForm.bind(this);
     // this.verifyAccount = this.verifyAccount.bind(this);
     // this.resendCode = this.resendCode.bind(this);
