@@ -1,0 +1,12 @@
+.register-box {
+    box-shadow: 0 0 12px #1a96c6;
+    padding:20px;
+    margin: 60px 0 90px;
+    border: 1px solid #1a96c6;
+    & .btn-box {
+        & button{
+           background:#1a96c6;
+        }
+    }
+  
+}

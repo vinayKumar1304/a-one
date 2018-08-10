@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, ModalBody, ModalFooter } from 'reactstrap';
 import { reduxForm, Field } from 'redux-form';
-// import RenderField from 'components/RenderField';
+import RenderField from 'components/RenderField';
 
 class ForgotPassword extends React.Component {
   constructor(props) {
@@ -11,11 +11,14 @@ class ForgotPassword extends React.Component {
     email: '',
     isDisabled: true
     }
+    console.log("forgot password", this.state.isDisabled );
+    console.log("forgot pzDasdasdasasassword", this.state.email );
     this.getEmail = this.getEmail.bind(this);
     this.sendMail = this.sendMail.bind(this);
   }
 
   getEmail(e) {
+    console.log("get email;", e);
     let email = e.target.value;
     this.setState({email: email})
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,6 +30,7 @@ class ForgotPassword extends React.Component {
   }
 
   sendMail() {
+    console.log('sent email', email);
     let email = this.state.email;
     this.props.loadingImage(true);
     this.props.userForgotPassword(email);

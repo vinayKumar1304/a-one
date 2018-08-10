@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RenderField = ({ input, label, type, meta: { touched, error, invalid } }) => {
-  console.log('vinyjhgjagdjhads',input);
+  console.log("vinay", input.value);
   return (
     <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
       <label  className="control-label">{}</label>
