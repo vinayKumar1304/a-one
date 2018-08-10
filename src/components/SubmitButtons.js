@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Col, Row} from 'reactstrap';
 
-import './SubmitButton.scss';
+// import './SubmitButton.scss';
 
 const SubmitButtons = (props) => {
   const {

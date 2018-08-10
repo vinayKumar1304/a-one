@@ -8,7 +8,7 @@ import RenderField from 'components/RenderField';
 import SubmitButtons from 'components/SubmitButtons';
 import './Dashboard.scss';
 import { getLocalStorage } from '../../../components/Helpers';
-import UserDashboard from '../../../layouts/PageLayout/UserDashboard';
+// import UserDashboard from '../../../layouts/PageLayout/UserDashboard';
 
 const contact = ['Mobile', 'Office', 'Home'];
 
@@ -33,7 +33,8 @@ class Dashboard extends React.Component {
             {user.email}<br/>
             {user.mobile}<br/>
           </div>
-          <UserDashboard/>
+          welcome vinay
+          {/*<UserDashboard/>*/}
         </Row>
       </div>
     );

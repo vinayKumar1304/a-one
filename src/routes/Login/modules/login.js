@@ -214,11 +214,27 @@ export const loggedIn = (values) => {
               firstname: 'Vinay',
               lastname: 'Nishad',
               email: 'vinay@incaendo.com',
-              mobile: 8860591713
+              mobile: 8860591713,
+              isOrdinary: false,
+              isAdmin: true,
+              isLogin: true,
           }
           saveLocalStorage('user', userData);
-          browserHistory.push('/dashboard');
+          console.log('going to route on dashboard');
+          window.location.href = '/dashboard';
+          // browserHistory.push('/dashboard');
         } else {
+          const userData = {
+              id: null,
+              firstname: null,
+              lastname: null,
+              email: null,
+              mobile: null,
+              isOrdinary: false,
+              isAdmin: false,
+              isLogin: false,
+          }
+          saveLocalStorage('user', userData);
           alert('Invalid login or password.')
           dispatch(setLoginDetail(false));
 		  dispatch(setAlertMeassage(true, 'Invalid login or password.'));

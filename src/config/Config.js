@@ -39,7 +39,7 @@ export const Url = {
   HOME_PAGE : '/',
   // THANK_YOU: '/online-order/success',
   REGISTER: '/Register',
-  LOGIN_PAGE: '/Login',
+  LOGIN: '/login',
   DASHBOARD: '/dashboard',
   LOGIN_PAGE: '/user',
   // ACCOUNT_PAGE: '/customer/account',

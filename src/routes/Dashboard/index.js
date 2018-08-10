@@ -1,24 +1,24 @@
 import { injectReducer } from '../../store/reducers';
+import { initializeApp, setSiteLanguage } from '../../store/app';
+import { checkPageRestriction } from '../index';
 
 export default (store) => ({
-  path : 'dashboard',
-  /*  Async getComponent is only invoked when route matches   */
-  getComponent (nextState, cb) {
+  path: 'dashboard',
+
+  getComponent(nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point
         and embed an async module loader (jsonp) when bundling   */
     require.ensure([], (require) => {
-      /*  Webpack - use require callback to define
-          dependencies for bundling   */
-      const Dashboard = require('./containers/DashboardContainer').default
-      const reducer = require('./modules/dashboard').default
+      const Dashboard = require('./containers/DashboardContainer').default;
+      const reducer = require('./modules/dashboard').default;
 
-      /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'dashboard', reducer })
+      /*  Add the reducer to the store on key 'login'  */
+      injectReducer(store, { key: 'Dashboard', reducer });
 
       /*  Return getComponent   */
-      cb(null, Dashboard)
+      cb(null, Dashboard);
 
     /* Webpack named bundle   */
-    }, 'dashboard')
-  }
-})
+    }, 'Dashboard');
+  },
+});

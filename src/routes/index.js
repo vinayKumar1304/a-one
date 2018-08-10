@@ -5,6 +5,7 @@ import CounterRoute from './Counter'
 import LoginRoute from './Login'
 import RegisterRoute from './Register'
 import DashboardRoute from './Dashboard'
+import { getLocalStorage } from '../components/Helpers';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -20,25 +21,10 @@ import DashboardRoute from './Dashboard'
           access = true;
           break;
         case path.DASHBOARD:
-          localStorage = getLocalStorage('receivedLoginDetail');
-          access = (typeof localStorage.customer_id !== 'undefined') ? true : false;
+          let user = getLocalStorage('user');
+          access = (user.isLogin !== false) ? true : false;
           break;
       }
-      // check product detail url
-      // if (access === false) {
-      //   const splitPath = pathname.split('/');
-      //   if (['pizza', 'value-deals', 'sides-desserts', 'beverages', 'special-offers'].indexOf(splitPath[1]) > -1) {
-      //     if (typeof splitPath[2] !== 'undefined' && splitPath[2] !== '' ) {
-      //       access = true;
-      //     } else {
-      //       const slideIndex = webRedirectMenuSlide(splitPath[1]);
-      //       saveSessionStorage('referalPage', 'website-menu-page');
-      //       saveSessionStorage('menuSlideIndex', slideIndex);
-      //       browserHistory.push(path.MENU_PAGE);
-      //       return false;
-      //     }
-      //   }
-      // }
       if (access === false) {
         console.log('access denied !!!');
         window.location.href = `/`;
@@ -51,11 +37,12 @@ export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : Home,
+  onEnter     : checkPageRestriction,
   childRoutes : [
     LoginRoute(store),
-    RegisterRoute(),
-    CounterRoute(),
-    DashboardRoute()
+    RegisterRoute(store),
+    CounterRoute(store),
+    DashboardRoute(store)
 
   ]
 })
