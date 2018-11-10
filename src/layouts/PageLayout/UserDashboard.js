@@ -22,8 +22,12 @@ import logo from "assets/img/reactlogo.png";
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
+      console.log("pathhgkjhgkhjgkjhgkjhgkj",prop.path)
+      console.log("pathTO",prop.to)
+      console.log("pathKey",prop.key)
+      console.log("Component", prop.component);
       if (prop.redirect)
-        return <Redirect from={prop.path} to={prop.to} key={key} />;
+        // return <Redirect from={prop.path} to={prop.to} key={key} />;
       return <Route path={prop.path} component={prop.component} key={key} />;
     })}
   </Switch>

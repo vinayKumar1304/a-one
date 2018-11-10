@@ -201,7 +201,6 @@ export function setForgotPasswordFetching (status) {
 
 export const loggedIn = (values) => {
 	return (dispatch) => {
-        console.log('come here')
 		dispatch(setLoginDetail(true));
 		let url = `${Config.url}auth`;
 		let loginData = new FormData();
@@ -220,9 +219,9 @@ export const loggedIn = (values) => {
               isLogin: true,
           }
           saveLocalStorage('user', userData);
-          console.log('going to route on dashboard');
-          window.location.href = '/dashboard';
-          // browserHistory.push('/dashboard');
+          console.log('going to route on dashboard new');
+          window.location.href = '/dashboardNew';
+          browserHistory.push('/dashboardNew');
         } else {
           const userData = {
               id: null,
@@ -386,7 +385,7 @@ export const accountVerification = (values) => {
 			}
 			dispatch(accountVarified(response.data));
 			dispatch(accountVerifying(false));
-			browserHistory.push('/dashboard');
+			browserHistory.push('/dashboardNew');
 		}).catch(error => {
 			dispatch(setAlertMeassage(true, error.response.data.message));
    		dispatch(accountVerifying(false));

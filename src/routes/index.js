@@ -1,11 +1,13 @@
 // We only need to import the modules necessary for initial render
-import CoreLayout from '../layouts/PageLayout/PageLayout'
-import Home from './Home'
-import CounterRoute from './Counter'
-import LoginRoute from './Login'
-import RegisterRoute from './Register'
-import DashboardRoute from './Dashboard'
+import CoreLayout from '../layouts/PageLayout/PageLayout';
+import Home from './Home';
+import CounterRoute from './Counter';
+import LoginRoute from './Login';
+import RegisterRoute from './Register';
+import DashboardRoute from './Dashboard';
+// import DashboardNewRoute from './Dashboard';
 import { getLocalStorage } from '../components/Helpers';
+import Dashboard from "../layouts/Pagelayout/UserDashboard.js";
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -33,6 +35,7 @@ import { getLocalStorage } from '../components/Helpers';
       }
     }
 
+// export const indexRoutes = [{ path: "/", component: Dashboard }];
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
@@ -42,8 +45,8 @@ export const createRoutes = (store) => ({
     LoginRoute(store),
     RegisterRoute(store),
     CounterRoute(store),
-    DashboardRoute(store)
-
+    DashboardRoute(store),
+    // DashboardNewRoute(store),
   ]
 })
 

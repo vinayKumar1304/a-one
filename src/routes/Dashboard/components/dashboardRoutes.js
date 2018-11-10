@@ -8,18 +8,18 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Unarchive from "@material-ui/icons/Unarchive";
 // core components/views
-import DashboardPage from "views/Dashboard/Dashboard";
-import UserProfile from "views/UserProfile/UserProfile";
-import TableList from "views/TableList/TableList";
-import Typography from "views/Typography/Typography";
-import Icons from "views/Icons/Icons";
-import Maps from "views/Maps/Maps";
-import NotificationsPage from "views/Notifications/Notifications";
-import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro";
+import DashboardPage from "../../views/Dashboard/Dashboard";
+import UserProfile from "../../views/UserProfile/UserProfile";
+import TableList from "../../views/TableList/TableList";
+import Typography from "../../views/Typography/Typography";
+import Icons from "../../views/Icons/Icons";
+import Maps from "../../views/Maps/Maps";
+import NotificationsPage from "../../views/Notifications/Notifications";
+import UpgradeToPro from "../../views/UpgradeToPro/UpgradeToPro";
 
-const dashboardRoutes = [
+export const dashboardRoutes = [
   {
-    path: "/dashboard",
+    path: "/dashboardNew",
     sidebarName: "Dashboard",
     navbarName: "Material Dashboard",
     icon: Dashboard,
@@ -74,7 +74,7 @@ const dashboardRoutes = [
     icon: Unarchive,
     component: UpgradeToPro
   },
-  { redirect: true, path: "/", to: "/dashboard", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/DashboardPage", navbarName: "Redirect" }
 ];
 
 export default dashboardRoutes;

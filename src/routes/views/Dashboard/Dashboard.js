@@ -30,13 +30,13 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
-import { bugs, website, server } from "variables/general.js";
+import { bugs, website, server } from "../../variables/general.js";
 
 import {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart
-} from "variables/charts";
+} from "../../variables/charts";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 

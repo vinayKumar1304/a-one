@@ -40,7 +40,7 @@ export const Url = {
   // THANK_YOU: '/online-order/success',
   REGISTER: '/Register',
   LOGIN: '/login',
-  DASHBOARD: '/dashboard',
+  DASHBOARD: '/dashboardNew',
   LOGIN_PAGE: '/user',
   // ACCOUNT_PAGE: '/customer/account',
 };

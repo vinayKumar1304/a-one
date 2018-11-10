@@ -1,4 +1,4 @@
-import { injectReducer } from '../../store/reducers';
+import { injectReducer } from '../store/reducers';
 import { checkPageRestriction } from '../index';
 // import { initializeApp, setSiteLanguage } from '../../store/app';
 

@@ -1,9 +1,9 @@
-import { injectReducer } from '../../store/reducers';
-import { initializeApp, setSiteLanguage } from '../../store/app';
+import { injectReducer } from '../store/reducers';
+import { initializeApp, setSiteLanguage } from '../store/app';
 import { checkPageRestriction } from '../index';
 
 export default (store) => ({
-  path: 'dashboard',
+  path: 'dashboardNew',
 
   getComponent(nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point

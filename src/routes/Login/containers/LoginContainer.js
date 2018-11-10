@@ -23,7 +23,7 @@ import {
     // userForgotPassword,
     // resetAlertBox
   } from '../modules/login';
-  import { loadingImage } from "../../../store/app";
+  import { loadingImage } from "../../store/app";
 
 /*  Object of action creators (can also be function that returns object).
     Keys will be passed as props to presentational components. Here we are

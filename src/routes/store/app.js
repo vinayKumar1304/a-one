@@ -1,4 +1,4 @@
-import { getLocalStorage } from '../components/Helpers';
+import { getLocalStorage } from '../../components/Helpers';
 import { setLanguage } from 'redux-i18n';
 // import { DEFAULT_SITE_LANGUAGE } from '../config/Config';
 
