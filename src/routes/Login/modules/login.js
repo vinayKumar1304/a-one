@@ -220,7 +220,7 @@ export const loggedIn = (values) => {
           }
           saveLocalStorage('user', userData);
           console.log('going to route on dashboard new');
-          window.location.href = '/dashboardNew';
+          // window.location.href = '/dashboardNew';
           browserHistory.push('/dashboardNew');
         } else {
           const userData = {

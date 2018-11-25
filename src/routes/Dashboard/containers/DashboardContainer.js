@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Dashboard from '../components/dashboardRoutes';
+import Dashboard from '../components/Dashboard';
 
 const mapDispatchToProps = (dispatch) => {
   return({
