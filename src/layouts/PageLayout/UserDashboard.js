@@ -23,7 +23,7 @@ const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
       if (prop.redirect)
-        // return <Redirect from={prop.path} to={prop.to} key={key} />;
+        return <Redirect from={prop.path} to={prop.to} key={key} />;
       return <Route path={prop.path} component={prop.component} key={key} />;
     })}
   </Switch>
@@ -41,8 +41,10 @@ class UserDashboard extends React.Component {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
   getRoute() {
-    console.log(' routes ', this.props);
+    // console.log(' routes ', this.props);
+    // console.log(' routes new ', this.props.location);
     return this.props.location.pathname !== "/maps";
+    // // return  <div>vinay</div>
   }
   resizeFunction() {
     if (window.innerWidth >= 960) {

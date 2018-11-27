@@ -30,7 +30,7 @@ class TopMenu extends React.Component {
   }
   render() {
     return (
-      <Navbar color="dark" dark expand="md" className='top-menu'>
+      <Navbar color="primary" expand="lg" className='top-menu light2' scrolling fixed="top">
         <NavbarBrand href="/">A-one Enterprises</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>

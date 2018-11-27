@@ -1,16 +1,14 @@
-import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
-// import Header from 'components/Header';
-// import Footer from 'components/Footer';
+import React from 'react';
+import DuckImage from '../assets/Duck.jpg';
 import Slider from 'components/Slider';
 import PlanImg from '../assets/Plan-Structure.png';
 import { Row, Col } from 'reactstrap';
-import './HomeView.scss'
+import './HomeView.scss';
 
 export const HomeView = () => (
   <div>
-    <Slider />
-    <Col xs='12' className='my-5'>
+    {/* <Slider /> */}
+    <Col xs='12' className='my-5 pt-4'>
       <Row>
         <Col sm='4'>
           <img src={PlanImg} alt='Plan Structure' title='MLM Plan Structure' className='img-responsive' />

@@ -17,7 +17,7 @@ export const Header = (props) => {
   } = props;
 
     return (
-      <div className='col-12 px-0'> 
+      <div className='col-12 px-0'>
         <TopMenu/>
       </div>
     )

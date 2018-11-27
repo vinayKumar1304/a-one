@@ -18,7 +18,7 @@ import sidebarStyle from "assets/jss/material-dashboard-react/components/sidebar
 
 const Sidebar = ({ ...props }) => {
   console.log(props);
-  console.log(props.routeName);
+  console.log("viadkjhkdjksjdhkjdsh kjh dkjh", props.routeName);
   // verifies if routeName is the one active (in browser input)
   function activeRoute(routeName) {
     return props.routes.indexOf(routeName) > -1 ? true : false;

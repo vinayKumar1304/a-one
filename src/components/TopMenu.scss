@@ -18,3 +18,22 @@
       }
     }
 }
+// .navbar {
+//     background-color: rgba(0,0,0,.2);
+// }
+.page-footer, .top-nav-collapse {
+    background-color: #1C2331;
+  }
+  @media screen and (min-width: 600px){
+    .navbar.scrolling-navbar {
+      -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+      -o-transition: background .5s ease-in-out,padding .5s ease-in-out;
+      transition: background .5s ease-in-out,padding .5s ease-in-out;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .navbar.scrolling-navbar.top-nav-collapse {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+  }
