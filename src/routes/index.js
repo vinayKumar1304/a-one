@@ -47,6 +47,7 @@ export const createRoutes = (store) => ({
     CounterRoute(store),
     // DashboardRoute(store),
     DashboardNewRoute(store),
+    
   ]
 })
 

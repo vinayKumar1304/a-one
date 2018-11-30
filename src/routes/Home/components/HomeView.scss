@@ -3,3 +3,10 @@
   width: 120px;
   margin: 1.5rem auto;
 }
+.carousel-inner {
+  max-height:calc(100vh - 0em);
+  & .carousel-item{
+    max-height: inherit;
+    max-width: 100%;
+  }
+}

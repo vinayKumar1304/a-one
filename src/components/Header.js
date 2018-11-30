@@ -9,11 +9,6 @@ import './Header.scss';
 export const Header = (props) => {
   const {
     to = '/',
-    // icon = HeaderIcon.CART,
-    // homeLogo = HeaderIcon.HMLOGO,
-    // cartItem = 0,
-    // showCartIcon = true
-    
   } = props;
 
     return (

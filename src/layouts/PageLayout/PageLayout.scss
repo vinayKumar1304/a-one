@@ -1,3 +1,7 @@
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .page-layout__viewport {
   padding-top: 4rem;
 }
@@ -7,5 +11,12 @@
   text-decoration: underline;
 }
 body {
+  min-height: calc(100vh - 0em);
+  height: 100%;
+}
+.max-height{
+  max-height:calc(100vh - 0em);
+}
+.min-height{
   min-height: calc(100vh - 0em);
 }

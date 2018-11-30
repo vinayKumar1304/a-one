@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem, Col
 } from 'reactstrap';
-import './TopMenu.scss'
+import './TopMenu.scss';
 
 class TopMenu extends React.Component {
   constructor(props) {
@@ -30,16 +30,13 @@ class TopMenu extends React.Component {
   }
   render() {
     return (
-      <Navbar color="primary" expand="lg" className='top-menu light2' scrolling fixed="top">
+      <Navbar color="primary" expand="lg" className='top-menu light2' fixed="top">
         <NavbarBrand href="/">A-one Enterprises</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="./">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/about-us">About Us</NavLink>
             </NavItem>
             {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -58,14 +55,18 @@ class TopMenu extends React.Component {
                   </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown> */}
+            
+            {location.pathname === "/login" || location.pathname === "/" ? 
+              <NavItem>
+                <NavLink href="/login">Login</NavLink> 
+              </NavItem>
+            : 
+              <NavItem>
+                <NavLink href="/">Logout</NavLink>
+              </NavItem>
+            }
             <NavItem>
-              <NavLink href="/contact">Contact Us</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/login">Login</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/Register">Register</NavLink>
+              <NavLink href="/register">Register</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

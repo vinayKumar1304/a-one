@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { AdminLogin } from './AdminLogin';
-import { UserLogin } from './UserLogin';
+// import { AdminLogin } from './AdminLogin';
+// import { UserLogin } from './UserLogin';
 // import Alert from 'components/Alert';
 import { Row, Col, Form, Button } from 'reactstrap';
 import LoginForm from './LoginForm';
@@ -23,26 +23,34 @@ class Login extends React.Component {
       page: 'login'
     }
   }
-  componentWillUnmount() {
-    // this.props.resetRegisterForm();
-    // this.props.resetVerifyForm();
+
+  userForgotPassword() {
+    alert("Please check your mail.");
   }
+
+  resetRegisterForm(){
+    alert("again register");
+  }
+  // componentWillUnmount() {
+  //   this.props.resetRegisterForm();
+  //   this.props.resetVerifyForm();
+  // }
 
   // componentWillReceiveProps(nextProps) {
   //   if (nextProps.fetching === false && this.props.loader === true) {
-  //     // this.props.loadingImage(false);
+  //     this.props.loadingImage(false);
   //   }
   // }
   saveLoginDetail(values) {
-    // this.props.loadingImage(true)
+    // this.props.loadingImage(true);
     
     console.log('values======================================')
-    console.log(values)
+    console.log(values);
     this.props.loggedIn(values);
   }
   render() {
     return (
-      <div className='col-12 px-0'>
+      <div className='col-12 px-0 mt-4'>
         { this.state.page === 'register' &&
           <Row className='main-wrapper content-wrapper'>
             <Col className='col-12 col-sm-12 col-xl-12'>
@@ -51,7 +59,7 @@ class Login extends React.Component {
                 handleSubmit={this.props.handleSubmit(this.register)}
                 contactType={this.props.contactType}
                 contactNumberType={this.contactNumberType}
-                userFbDetails={this.state.userFbDetails}
+                // userFbDetails={this.state.userFbDetails}
               /> */}
             </Col>
           </Row>               
@@ -60,6 +68,7 @@ class Login extends React.Component {
           <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
           <LoginForm
             {...this.props}
+            userForgotPassword={this.userForgotPassword}
             handleSubmit={this.props.handleSubmit(this.saveLoginDetail)}
           />
           <Row>
@@ -69,22 +78,7 @@ class Login extends React.Component {
           </Row>
         </div>
         }
-        { this.state.page === 'adminLogin' &&
-          <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
-          <AdminLogin
-            {...this.props}
-            // handleSubmit={this.props.handleSubmit(this.saveLoginDetail)}
-          />
-        </div>
-      }
-      { this.state.page === 'userLogin' &&
-        <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
-        <UserLogin
-          {...this.props}
-          // handleSubmit={this.props.handleSubmit(this.saveLoginDetail)}
-        />
-      </div>
-      }
+      
       </div>
     );
   }

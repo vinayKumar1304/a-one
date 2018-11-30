@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
     wiring in the actions and state necessary to render a presentational
     component - in this case, the counter:   */
 
-import Register from '../components/Register'
+import Register from '../components/Register';
 
 /*  Object of action creators (can also be function that returns object).
     Keys will be passed as props to presentational components. Here we are

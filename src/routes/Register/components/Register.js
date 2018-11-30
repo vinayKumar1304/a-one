@@ -13,9 +13,11 @@ const contact = ['Mobile','Office','Home'];
 class Register extends React.Component {
   constructor(props) {
     super(props);
+    console.log("vinay");
   }
 
   render() {
+    
     let mobileOptions = ['Mobile', 'Home', 'Office'];
     const { handleSubmit, onSubmit } = this.props;
     return (
