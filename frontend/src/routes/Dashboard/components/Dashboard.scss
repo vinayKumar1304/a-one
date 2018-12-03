@@ -110,6 +110,13 @@
             }
         }
     }
+    & .userProfileImg, & .sponserProfileImg{
+        max-width: 120px;
+        max-height: 120px;
+        overflow: hidden;
+        border-radius: 100%;
+        margin: 15px auto;
+    }
 }
 
 

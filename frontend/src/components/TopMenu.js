@@ -20,13 +20,20 @@ class TopMenu extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isLoggedIn: false
     };
   }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
+  }
+  clickLogout(){
+    console.log("logged IN");
+    this.state({
+      isLoggedIn: true
+    })
   }
   render() {
     return (
@@ -56,15 +63,17 @@ class TopMenu extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown> */}
             
-            {location.pathname === "/login" || location.pathname === "/" ? 
+            {/* {location.pathname === "/login" || location.pathname === "/" ?  */}
               <NavItem>
-                <NavLink href="/login">Login</NavLink> 
+                <NavLink href="/login" onClick={() => this.props.clickLogout()}>
+                  {this.props.isLoggedIn? 'Logout' : 'Login'}
+                </NavLink> 
               </NavItem>
-            : 
-              <NavItem>
+            {/* :  */}
+              {/* <NavItem>
                 <NavLink href="/">Logout</NavLink>
-              </NavItem>
-            }
+              </NavItem> */}
+            {/* } */}
             <NavItem>
               <NavLink href="/register">Register</NavLink>
             </NavItem>
