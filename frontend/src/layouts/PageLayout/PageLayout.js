@@ -7,8 +7,8 @@ import './PageLayout.scss';
 // import './mdb.min.js';
 
 export const PageLayout = ({ children }) => (
-    <div> 
-       <Header />
+    <div>
+       
           {children}
         <Footer />
     </div>

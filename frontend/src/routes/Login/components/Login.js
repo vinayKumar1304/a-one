@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import LoginForm from './LoginForm'
+import Header from '../../../components/Header'
 
 class Login extends React.Component {
   constructor (props) {
@@ -18,13 +19,16 @@ class Login extends React.Component {
 
   render () {
     return (
-      <div className='col-12 px-0 mt-4'>
-        <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
-          <LoginForm
-            {...this.props}
-            userForgotPassword={this.userForgotPassword}
-            handleSubmit={this.props.handleSubmit(this.login)}
-          />
+      <div>
+        <Header />
+        <div className='col-12 px-0 mt-4'>
+          <div className='col-12 col-sm-12 col-xl-12 mb-3 main-wrapper content-wrapper'>
+            <LoginForm
+              {...this.props}
+              userForgotPassword={this.userForgotPassword}
+              handleSubmit={this.props.handleSubmit(this.login)}
+            />
+          </div>
         </div>
       </div>
     )

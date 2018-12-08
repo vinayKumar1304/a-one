@@ -3,9 +3,12 @@ import DuckImage from '../assets/Duck.jpg';
 import Slider from 'components/Slider';
 import PlanImg from '../assets/Plan-Structure.png';
 import { Row, Col } from 'reactstrap';
+import Header from '../../../components/Header';
 import './HomeView.scss';
 
 export const HomeView = () => (
+  <div>
+  <Header />
   <div className="col-12">
     <Row>
       <Slider />
@@ -36,6 +39,7 @@ export const HomeView = () => (
         </Row>
       </Col>
     </Row>
+  </div>
   </div>
 )
 

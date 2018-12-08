@@ -23,19 +23,23 @@ class TopMenu extends React.Component {
     this.state = {
       loggedIn: false,
       isOpen: false,
-      isLoggedIn: false
+      isLoggedIn: false,
+      user: {}
     };
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
-  async componentWillMount() {
+  async componentWillMount(){
+    console.log('coomeeksdkfnksjgnfj');
     const user = await getLocalStorage('user');
     if (user !== null && typeof user.email !== 'undefined') {
       this.setState({loggedIn: true});
+      this.setState({user: user});
     }
   }
 
@@ -51,27 +55,6 @@ class TopMenu extends React.Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="./">Home</NavLink>
-            </NavItem>
-            {/* <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Services
-                </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                  </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                  </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                  </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
-
             {this.state.loggedIn === false &&
               <NavItem>
                 <NavLink href="/login">Login</NavLink>
@@ -84,7 +67,12 @@ class TopMenu extends React.Component {
             }
             {this.state.loggedIn === true &&
               <NavItem>
-                <NavLink href="/register" onClick={() => this.logout()}>Logout</NavLink>
+                <NavLink href='#'>{this.state.user.first_name} {this.state.user.last_name}</NavLink>
+              </NavItem>
+            }
+            {this.state.loggedIn === true &&
+              <NavItem>
+                <NavLink onClick={() => this.logout()}>Logout</NavLink>
               </NavItem>
             }
           </Nav>

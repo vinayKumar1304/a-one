@@ -11,11 +11,11 @@ export const Header = (props) => {
     to = '/',
   } = props;
 
-    return (
-      <div className='col-12 px-0'>
-        <TopMenu/>
-      </div>
-    )
+  return (
+    <div className='col-12 px-0'>
+      <TopMenu />
+    </div>
+  )
 }
 
 export default Header;

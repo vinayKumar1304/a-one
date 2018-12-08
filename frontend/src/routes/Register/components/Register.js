@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Form } from 'reactstrap';
 import { reduxForm, Field } from 'redux-form';
 import { Row, Col, Label, Input, FormGroup, Button } from 'reactstrap';
-
+import Header from '../../../components/Header';
 import RenderField from 'components/RenderField';
 import SubmitButtons from 'components/SubmitButtons';
 import './Register.scss';
@@ -17,10 +17,12 @@ class Register extends React.Component {
   }
 
   render() {
-    
+
     let mobileOptions = ['Mobile', 'Home', 'Office'];
     const { handleSubmit, onSubmit } = this.props;
     return (
+      <div>
+        <Header />
       <div className="container">
       <Row>
       <div className='col-12 col-sm-6 col-md-6 mx-auto register-box'>
@@ -79,6 +81,7 @@ class Register extends React.Component {
         </Form>
       </div>
       </Row>
+      </div>
       </div>
     );
   }

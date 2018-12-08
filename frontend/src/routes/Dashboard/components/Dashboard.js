@@ -12,6 +12,7 @@ import RenderField from 'components/RenderField';
 import SubmitButtons from 'components/SubmitButtons';
 import './Dashboard.scss';
 import { getLocalStorage } from '../../../components/Helpers';
+import Header from '../../../components/Header';
 import  UserProfileImg from '../assets/bg-img.jpg';
 
 const contact = ['Mobile', 'Office', 'Home'];
@@ -32,14 +33,16 @@ class Dashboard extends React.Component {
       });
     }
   }
- 
+
 
   render() {
     const user = getLocalStorage('user');
-    
+
     let mobileOptions = ['Mobile', 'Home', 'Office'];
     const { handleSubmit, onSubmit } = this.props;
     return (
+      <div>
+        <Header />
       <div className="col-12 mt-5 dashboard">
         <Row>
           <Col sm='3' className="dashboard-menu pt-3">
@@ -86,12 +89,12 @@ class Dashboard extends React.Component {
                     </NavItem>
                   </Nav>
               </Col>
-            </Row>  
+            </Row>
           </Col>
           <Col sm='9' className="pt-3">
             <Row>
               <Col sm='12'>
-                
+
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
                       <h4 className='title col-12 col-sm-12 col-xl-12'><span>Dashboard</span></h4>
@@ -159,11 +162,11 @@ class Dashboard extends React.Component {
                         <Col sm="6" xs="12">
                           <Card body className="mt-2 mb-0 text-center px-0 pt-2 pb-0 user-bg">
                             <CardText className="px-2 mb-0">
-                              My profile 
+                              My profile
                             </CardText>
                             <CardTitle className="mb-0 px-2 my-2">User Name Here</CardTitle>
                             <CardText className="px-2 mb-0">
-                              My User Id: 123456 
+                              My User Id: 123456
                             </CardText>
                             <CardText className="userProfileImg"><img src={UserProfileImg} alt="" title="" className="img-circle"/></CardText>
                             <CardText className="text-center my-3">
@@ -176,11 +179,11 @@ class Dashboard extends React.Component {
                         <Col sm="6" xs="12">
                           <Card body className="mt-2 mb-0 text-center px-0 pt-2 pb-0 sponser-bg">
                               <CardText className="px-2 mb-0">
-                                My profile 
+                                My profile
                               </CardText>
                               <CardTitle className="mb-0 px-2 my-2">Sponser Name Here</CardTitle>
                               <CardText className="px-2 mb-0">
-                                My User Id: 123456 
+                                My User Id: 123456
                               </CardText>
                               <CardText className="sponserProfileImg"><img src={UserProfileImg} alt="" title="" className="img-circle"/></CardText>
                               <CardText className="text-center my-3">
@@ -253,6 +256,7 @@ class Dashboard extends React.Component {
             </Row>
           </Col>
         </Row>
+      </div>
       </div>
     );
   }
