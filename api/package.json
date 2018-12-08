@@ -10,15 +10,17 @@
   "author": "Pradeep kumar",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.0",
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "dotenv": "^2.0.0",
+    "express": "^4.14.0",
     "express-winston": "^2.0.0",
     "helmet": "^2.1.3",
     "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "moment": "^2.22.2",
+    "mysql": "^2.16.0",
     "winston": "^2.2.0"
   }
 }
