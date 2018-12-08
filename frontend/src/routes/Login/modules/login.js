@@ -1,635 +1,193 @@
-// import axios from 'axios';
-import { browserHistory } from 'react-router';
+import axios from 'axios'
+import { browserHistory } from 'react-router'
 
 // import querystring from 'querystring';
 
-import {Config} from '../../../config/Config';
-import {saveLocalStorage, getLocalStorage} from '../../../components/Helpers';
-//import { request } from 'lib/ApiController';
-import { translate } from 'components/Helpers';
+import { Config } from '../../../config/Config'
+import {saveLocalStorage, getLocalStorage} from '../../../components/Helpers'
 
 // ------------------------------------
 // Constants
 // ------------------------------------
 
-export const FETCHING_LOGIN_DETAIL = 'FETCHING_LOGIN_DETAIL';
-export const RECEIVED_LOGIN_DETAIL = 'RECEIVED_LOGIN_DETAIL';
-export const SHOW_REGISTER_FORM = 'SHOW_REGISTER_FORM';
-export const SHOW_FACEBOOK_FORM = 'SHOW_FACEBOOK_FORM';
-export const CONTACT_TYPE = 'CONTACT_TYPE';
-export const USER_REGISTERING = 'USER_REGISTERING';
-export const USER_REGISTERED = 'USER_REGISTERED';
-export const USER_REGISTERED_ERROR = 'USER_REGISTERED_ERROR';
-export const SET_VERIFY_ACCOUNT = 'SET_VERIFY_ACCOUNT';
-export const SET_USER_MAIL = 'SET_USER_MAIL';
-export const RESET_REGISTER_FORM_VALUE = 'RESET_REGISTER_FORM_VALUE';
-export const RESET_VERIFY_FORM_VALUE = 'RESET_VERIFY_FORM_VALUE';
-export const ACCOUNT_VERIFYING = 'ACCOUNT_VERIFYING';
-export const ACCOUNT_VERIFIED = 'ACCOUNT_VERIFIED';
-export const ACCOUNT_VERIFY_ERROR = 'ACCOUNT_VERIFY_ERROR';
-export const SENDING_ACTIVATION_CODE = 'SENDING_ACTIVATION_CODE';
-export const SEND_ACTIVATION_CODE = 'SEND_ACTIVATION_CODE';
-export const ERROR_ACTIVATION_CODE = 'ERROR_ACTIVATION_CODE';
-export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
-export const FETCHING_FORGOT_PASSWORD = 'FETCHING_FORGOT_PASSWORD';
-export const ERROR_FORGOT_PASSWORD = 'ERROR_FORGOT_PASSWORD';
-export const SET_ALERT_MESSAGE = "SET_ALERT_MESSAGE";
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_RESPONSE = 'LOGIN_RESPONSE'
+export const LOGIN_ERROR = 'LOGIN_RESPONSE'
+export const REGISTER_REQUEST = 'REGISTER_REQUEST'
+export const REGISTER_RESPONSE = 'REGISTER_RESPONSE'
+export const REGISTER_ERROR = 'REGISTER_RESPONSE'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export function setLoginDetail (status) {
-	return {
-		type: FETCHING_LOGIN_DETAIL,
-		fetching: status
-	};
-}
-
-export function receivedLoginDetail (payload) {
-	return {
-		type: RECEIVED_LOGIN_DETAIL,
-		error: false,
-		loginDetail: payload
-	};
-}
-
-export function showRegisterForm (status) {
-	return {
-		type: SHOW_REGISTER_FORM,
-		showRegisterForm: status
-	}
-}
-
-export function showFacebookForm (status) {
-	return {
-		type: SHOW_FACEBOOK_FORM,
-		showFacebookForm: status
-	}
-}
-
-export function resetRegisterFormValue (status) {
-	return {
-		type: RESET_REGISTER_FORM_VALUE,
-		showRegisterForm: status,
-	}
-}
-
-export function resetVerifyFormValue (status) {
-	return {
-		type: RESET_VERIFY_FORM_VALUE,
-		showVerifyForm: status,
-	}
-}
-
-export function contactType (type) {
-	return {
-		type: CONTACT_TYPE,
-		contactType: type
-	}
-}
-
-export function userRegistering (status) {
-	return {
-		type: USER_REGISTERING,
-		fetching: status
-	}
-}
-
-export function userRegistered (response) {
-	return {
-		type: USER_REGISTERED,
-		userRegistrationDetail: response
-	}
-}
-
-export function userRegisteredError (status) {
-	return {
-		type: USER_REGISTERED_ERROR,
-		error: status
-	}
-}
-
-export function accountVerifying (status) {
-	return {
-		type: ACCOUNT_VERIFYING,
-		veifying: status
-	}
-}
-
-export function accountVarified (response) {
-	return {
-		type: ACCOUNT_VERIFIED,
-		accountVerifiedDetail: response
-	}
-}
-
-export function accountVerifyError (status) {
-	return {
-		type: ACCOUNT_VERIFY_ERROR,
-		error: status
-	}
-}
-
-export function setVerifyAccount (status) {
-	return {
-		type: SET_VERIFY_ACCOUNT,
-		showVerifyForm: status
-	}
-}
-
-export function setUserMail (mail) {
-	return {
-		type: SET_USER_MAIL,
-		mail: mail
-	}
-}
-
-export function sendingActivationCode (status) {
-	return {
-		type: SENDING_ACTIVATION_CODE,
-		fetching: status
-	}
-}
-
-export function activationCodeSend (response) {
-	return {
-		type: SEND_ACTIVATION_CODE,
-		activationCodeDetail: response
-	}
-}
-
-export function activationCodeError (status) {
-	return {
-		type: ERROR_ACTIVATION_CODE,
-		error: status
-	}
-}
-
-export function sendForgotPassword (status) {
-	return {
-		type: FORGOT_PASSWORD,
-		forgotStatus: status
-	}
-}
-
-export function sendForgotPasswordError (status) {
-	return {
-		type: ERROR_FORGOT_PASSWORD,
-		error: status
-	}
-}
-
-export function setAlertMeassage(status, message) {
+export function loginRequest () {
   return {
-    type: SET_ALERT_MESSAGE,
-    showAlert: status,
-    alertMessage: message
-  };
+    type: LOGIN_REQUEST,
+    processing: true
+  }
 }
 
-export function setForgotPasswordFetching (status) {
-	return {
-		type: FETCHING_FORGOT_PASSWORD,
-		fetching: status
-	}
+export function loginResponse (payload) {
+  return {
+    type: LOGIN_RESPONSE,
+    processing: false,
+    user: payload
+  }
 }
 
-//--------------------------------------------
+export function loginError (payload) {
+  return {
+    type: LOGIN_ERROR,
+    error: true,
+    processing: false,
+    user: payload
+  }
+}
+
+export function registerRequest () {
+  return {
+    type: REGISTER_REQUEST,
+    processing: true
+  }
+}
+
+export function registerResponse (payload) {
+  return {
+    type: REGISTER_RESPONSE,
+    error: false
+  }
+}
+
+export function registerError (payload) {
+  return {
+    type: REGISTER_ERROR,
+    processing: false,
+    error: true
+  }
+}
+
+// --------------------------------------------
 // Action Creator
-//--------------------------------------------
+// --------------------------------------------
 
-export const loggedIn = (values) => {
-	return (dispatch) => {
-		dispatch(setLoginDetail(true));
-		let url = `${Config.url}auth`;
-		let loginData = new FormData();
-		loginData.append('email', values.email);
-        loginData.append('password', values.password);
-        if (values.email === 'vinay@incaendo.com' && values.password === 'admin@123') {
-          console.log('come in if')
-          const userData = {
-              id: 1,
-              firstname: 'Vinay',
-              lastname: 'Nishad',
-              email: 'vinay@incaendo.com',
-							mobile: 8860591713,
-							yourDownline: 2,
-							rewardPoints: 2,
-              isOrdinary: false,
-              isAdmin: true,
-              isLogin: true,
-          }
-          saveLocalStorage('user', userData);
-          console.log('going to route on dashboard new');
-          // window.location.href = '/dashboardNew';
-          browserHistory.push('/dashboardNew');
-        } else {
-          const userData = {
-              id: null,
-              firstname: null,
-              lastname: null,
-              email: null,
-							mobile: null,
-							yourDownline: null,
-							rewardPoints: null,
-              isOrdinary: false,
-              isAdmin: false,
-              isLogin: false,
-          }
-          saveLocalStorage('user', userData);
-          alert('Invalid login or password.')
-          dispatch(setLoginDetail(false));
-		  dispatch(setAlertMeassage(true, 'Invalid login or password.'));
-        }
-        // axios({
-        //     method: 'post',  
-        //     url: url,
-        //     timeout: 100000,
-        //     data: loginData,
-        //     headers: {
-        //         'token': Config.token,
-        //         'device-type': Config.devicetype,
-        //         'Accept': Config.Accept,
-        //         'Access-Control-Allow-Origin': '*',
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-		// }).then(response => {
-		// 	let userData = {};
-		// 	userData.firstname = response.data.data.firstname;
-		// 	userData.lastname = response.data.data.lastname;
-		// 	userData.email = response.data.data.email;
-		// 	userData.phoneNumber = response.data.data.contact_number;
-		// 	userData.contact_ext = response.data.data.contact_ext;
-		// 	userData.contact_type = response.data.data.contact_type;
-		// 	userData.customer_id = response.data.data.customer_id;
-		// 	userData.dob = response.data.data.dob;
-		// 	userData.prefix = response.data.data.prefix;
-		// 	userData.message = response.data.data.message;
-		// 	userData.status = response.data.data.status;
-		// 	saveLocalStorage('user', userData);
-		// 	saveLocalStorage('receivedLoginDetail',response.data.data);
-		// 	dispatch(receivedLoginDetail(response.data.data));
-		// 	dispatch(setLoginDetail(false));
-		// 	browserHistory.push('/dashboard');
-		// }).catch(error => {
-		// 	dispatch(setLoginDetail(false));
-		// 	dispatch(setAlertMeassage(true, 'Invalid login or password.'));
-		// });
-	}
-}
-
-export const registerForm = () => {
-	return (dispatch) => {
-		dispatch(showRegisterForm(true));
-	}
-}
-
-export const facebookForm = () => {
-	return (dispatch) => {
-		dispatch(showFacebookForm(true));
-	}
-}
-
-export const resetRegisterForm = () => {
-	return (dispatch) => {
-		dispatch(resetRegisterFormValue(false));
-	}
-}
-
-export const resetVerifyForm = () => {
-	return (dispatch) => {
-		dispatch(resetVerifyFormValue(false));
-  }
-}
-
-export const setContactType = (type) => {
-	return (dispatch) => {
-		dispatch(contactType(type));
-	}
-}
-
-export const userRegistration = (values) => {
-	return (dispatch) => {
-		dispatch(userRegistering(true));
-		/*
-    *	setting user mail to get at Login component in case to resend code to user.
- 		*/
-		dispatch(setUserMail(values.Email));
-		let ext = '';
-		if(values.Ext) {
-  		ext = values.Ext;
-		}
-		let url = `${Config.url}register`;
-		let bodyFormData = new FormData();
-		bodyFormData.append('firstname', values.Firstname);
-		bodyFormData.append('lastname', values.Lastname);
-		bodyFormData.append('contact_number', values.Number);
-		bodyFormData.append('email', values.Email);
-		bodyFormData.append('password', values.Password);
-		bodyFormData.append('password_confirmation', values.Confirmpassword);
-		bodyFormData.append('birthdate', values.Dob);
-		bodyFormData.append('contact_type', values.MobileType);
-		bodyFormData.append('chknewsletter', 'no');
-		bodyFormData.append('contact_ext', ext);
-		axios({
-		  method: 'post',
-		  url: url,
-		  timeout: 100000,
-		  data: bodyFormData,
-		  headers: {'token': Config.token,
-        'device-type': Config.devicetype,
-        'Accept': Config.Accept,
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'multipart/form-data'
-      }
-		}).then(response => {
-			if(typeof response.data !== 'undefined') {
-				dispatch(setAlertMeassage(true, response.data.message));
-			}
-			/*
-			*  dispatch an action to set a props to open verify account page
-			*/
-			dispatch(setVerifyAccount(true));
-			dispatch(showRegisterForm(false));
-			dispatch(userRegistered(response.data));
-			dispatch(userRegistering(false));
-		}).catch(error => {
-			// setting custom message to as api returns the network error with 400 bad request
-			dispatch(setAlertMeassage(true, 'This customer email already exists'));
-			dispatch(setVerifyAccount(false));
-			dispatch(showRegisterForm(false));
-			dispatch(userRegistering(false));
-			dispatch(userRegisteredError(true));
-		});
-	}
-}
-
-export const accountVerification = (values) => {
-	return (dispatch) => {
-		dispatch(accountVerifying(true));
-		let url = `${Config.url}customerActivation`;
-		let verificationData = new FormData();
-		verificationData.append('email', values.Email);
-		verificationData.append('activation_code', values.ActivationCode);
-		axios({
-		  method: 'post',
-		  url: url,
-		  timeout: 100000,
-		  data: verificationData,
-		  headers: {'token': Config.token,
-        'device-type': Config.devicetype,
-        'Accept': Config.Accept,
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'multipart/form-data'
-      }
-		}).then(response => {
-			if(typeof response.data !== 'undefined') {
-				dispatch(setAlertMeassage(true, response.data.message));
-			}
-			dispatch(accountVarified(response.data));
-			dispatch(accountVerifying(false));
-			browserHistory.push('/dashboardNew');
-		}).catch(error => {
-			dispatch(setAlertMeassage(true, error.response.data.message));
-   		dispatch(accountVerifying(false));
-			dispatch(accountVerifyError(true));
-		});
-	}
-}
-
-export const resendActivationCode = (mail) => {
-	return (dispatch) => {
-		dispatch(sendingActivationCode(true));
-		let url = `${Config.url}resendActivationEmail`;
-		let resendCode = new FormData();
-		resendCode.append('email', mail);
-		axios({
-		  method: 'post',
-		  url: url,
-		  timeout: 100000,
-		  data: resendCode,
-		  headers: {'token': Config.token,
-       'device-type': Config.devicetype,
-        'Accept': Config.Accept,
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'multipart/form-data'
-      }
-		}).then(response => {
-			if(typeof response.data !== 'undefined') {
-				dispatch(setAlertMeassage(true, response.data.message));
-			}
-			dispatch(activationCodeSend(response.data));
-			dispatch(sendingActivationCode(false));
-		}).catch(error => {
-			dispatch(setAlertMeassage(true, error.response.data.message));
-			dispatch(sendingActivationCode(false));
-			dispatch(activationCodeError(true));
-		});
-
-	}
-
-}
-
-export const userForgotPassword = (values) => {
-	return (dispatch) => {
-		dispatch(setForgotPasswordFetching(true));
-		let url = `${Config.url}forgetPassword`;
-	// 	axios({
-	// 		method: 'post',
-	// 	  url: url,
-	// 	  timeout: 100000,
-	// 	  data: querystring.stringify({email: values}),
-	// 	  headers: {'token': Config.token,
-    //     'device-type': Config.devicetype,
-    //     'Accept': Config.Accept,
-    //     'Access-Control-Allow-Origin': '*',
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //   }
-	// 	}).then(response => {
-	// 		if(typeof response.data !== 'undefined') {
-	// 		  console.log(response.data.message);
-	// 			dispatch(setAlertMeassage(true, translate("An email sent to ") + values));
-	// 		}
-	// 		dispatch(setForgotPasswordFetching(false));
-	// 		dispatch(sendForgotPassword(true));
-	// 	}).catch(error => {
-	// 		console.log(error);
-	// 		dispatch(setAlertMeassage(true, translate("Invalid email address")));
-	// 		dispatch(setForgotPasswordFetching(false));
-	// 		dispatch(sendForgotPasswordError(true));
-	// 	});
-	}
-}
-
-export const resetAlertBox = (showAlert, message) => {
+export const login = (values) => {
   return (dispatch) => {
-    dispatch(setAlertMeassage(showAlert, message));
-  }
+    dispatch(loginRequest())
+    axios({
+			url: 'http://localhost:4000/login',
+	    method: 'POST',
+	    data: {
+				email: values.email,
+				password: values.password
+			},
+		  timeout: 100000,
+	    headers: {
+				'Accept': 'application/json',
+        'Content-Type': 'application/json'
+	    }
+    }).then(response => {
+			dispatch(loginResponse(response))
+			if (typeof response.data !== 'undefined' && typeof response.data.email !== 'undefined') {
+				saveLocalStorage('user', response.data)
+				browserHistory.push('/dashboardNew')
+			}
+		}).catch(err => {
+			console.log('error in login', err);
+      dispatch(loginError())
+		});
+	}
 }
 
+export const signup = (values) => {
+  return (dispatch) => {
+    dispatch(registerRequest())
+    axios({
+	    method: 'POST',
+	    url: `${Config.API.BASE_URL}/register`,
+	    data: {
+				first_name: values.first_name,
+				last_name: values.last_name,
+				email: values.email,
+				password: values.password,
+				gender: values.gender,
+				mobile: values.mobile,
+				dob: values.dob,
+				status: values.status
+			},
+	    headers: {
+        'Accept': Config.Accept,
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+	    }
+    }).then(response => {
+			dispatch(registerResponse(response))
+			browserHistory.push('/login')
+		}).catch(err => {
+			console.log('error in register', err)
+      dispatch(registerError())
+		})
+	}
+}
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 
 const ACTION_HANDLERS = {
-	[FETCHING_LOGIN_DETAIL]: (state, action) => {
+	[LOGIN_REQUEST]: (state, action) => {
     return {
       ...state,
-      fetching: action.fetching
+      processing: action.processing
     };
   },
-  [RECEIVED_LOGIN_DETAIL]: (state, action) => {
+  [LOGIN_RESPONSE]: (state, action) => {
     return {
       ...state,
-      error: action.error,
-      loginDetail: action.loginDetail
+			processing: action.processing,
+      user: action.user
     };
   },
-  [SHOW_REGISTER_FORM]: (state, action) => {
+  [LOGIN_ERROR]: (state, action) => {
     return {
       ...state,
-      showRegisterForm: action.showRegisterForm
-    };
-  },
-  [SHOW_FACEBOOK_FORM]: (state, action) => {
-    return {
-      ...state,
-      showFacebookForm: action.showFacebookForm
-    };
-  },
-  [CONTACT_TYPE]: (state, action) => {
-    return {
-      ...state,
-      contactType: action.contactType
-    };
-  },
-  [USER_REGISTERING]: (state, action) => {
-    return {
-      ...state,
-      fetching: action.fetching
-    };
-  },
-  [USER_REGISTERED]: (state, action) => {
-    return {
-      ...state,
-      userRegistrationDetail: action.userRegistrationDetail
-    };
-  },
-  [USER_REGISTERED_ERROR]: (state, action) => {
-    return {
-      ...state,
+			processing: action.processing,
       error: action.error
     };
   },
-  [ACCOUNT_VERIFYING]: (state, action) => {
+	[REGISTER_REQUEST]: (state, action) => {
     return {
       ...state,
-      veifying: action.verfying
+      processing: action.processing
     };
   },
-  [ACCOUNT_VERIFIED]: (state, action) => {
+  [REGISTER_RESPONSE]: (state, action) => {
     return {
       ...state,
-      accountVerifiedDetail: action.accountVerifiedDetail
+			processing: action.processing,
+      user: action.user
     };
   },
-  [ACCOUNT_VERIFY_ERROR]: (state, action) => {
+  [REGISTER_ERROR]: (state, action) => {
     return {
       ...state,
+			processing: action.processing,
       error: action.error
     };
   },
-  [SET_VERIFY_ACCOUNT]: (state, action) => {
-    return {
-      ...state,
-      showVerifyForm: action.showVerifyForm
-    };
-  },
-  [SET_USER_MAIL]: (state, action) => {
-    return {
-      ...state,
-      mail: action.mail
-    };
-  },
-  [RESET_REGISTER_FORM_VALUE]: (state, action) => {
-    return {
-      ...state,
-      showRegisterForm: action.showRegisterForm
-    };
-  },
-  [RESET_VERIFY_FORM_VALUE]: (state, action) => {
-    return {
-      ...state,
-      showVerifyForm: action.showVerifyForm
-    };
-  },
-  [SENDING_ACTIVATION_CODE]: (state, action) => {
-    return {
-      ...state,
-      fetching: action.fetching
-    };
-  },
-  [SEND_ACTIVATION_CODE]: (state, action) => {
-    return {
-      ...state,
-      activationCodeDetail: action.activationCodeDetail
-    };
-  },
-  [ERROR_ACTIVATION_CODE]: activationCodeError,
-  [ERROR_FORGOT_PASSWORD]: (state, action) => {
-    return {
-      ...state,
-      error: action.error
-    };
-  },
-  [FORGOT_PASSWORD]: (state, action) => {
-    return {
-      ...state,
-      forgotStatus: action.status
-    };
-  },
-	[SET_ALERT_MESSAGE]: (state, action) => {
-	    return {
-	        ...state,
-	        showAlert: action.showAlert,
-	        alertMessage: action.alertMessage
-	    };
-	},
-	[FETCHING_FORGOT_PASSWORD]: (state, action) => {
-    return {
-      ...state,
-      fetching: action.fetching
-    };
-  },
-};
-
-
+}
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 
 const initialState = {
-	fetching: false,
-	error: false,
-	loginDetail: '',
-	registerForm: false,
-	showRegisterForm: false,
-	showFacebookForm: false,
-	contactType: '',
-	showVerifyForm: false,
-	mail: '',
-	verfying: false,
-	accountVerifiedDetail: {},
-	activationCodeDetail: {},
-	forgotStatus: false,
-	showAlert: false,
-	alertMessage: "",
-};
+  error: false,
+  processing: false,
+  user: {}
+}
 
-export default function OrderReducer(state = initialState, action) {
-  const handler = ACTION_HANDLERS[action.type];
-  return handler ? handler(state, action) : state;
+export default function loginReducer (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+  return handler ? handler(state, action) : state
 }

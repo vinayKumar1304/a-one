@@ -10,8 +10,13 @@ const sendResp = (res, status, content) => {
 module.exports.login = (req, res) => {
   try {
     UserModel.fetch({email: req.body.email}, async (err, resp) => {
+      console.log(err);
       if (err !== null) {
         sendResp(res, 500, { message: err});
+      }
+      console.log(resp);
+      if (typeof resp[0] === 'undefined' || typeof resp[0].password === 'undefined') {
+        sendResp(res, 407, { message: 'Invalid credential'});
       }
       resp = resp[0];
       const isValid = await bcrypt.compareSync(req.body.password, resp.password);

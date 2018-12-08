@@ -1,13 +1,6 @@
-import { injectReducer } from '../store/reducers';
-import { checkPageRestriction } from '../index';
-// import { initializeApp, setSiteLanguage } from '../../store/app';
-
+import { injectReducer } from '../store/reducers'
 export default (store) => ({
   path: 'login',
-  // onEnter: (nextState, replace) => {
-  //   store.dispatch(initializeApp());
-  //   store.dispatch(setSiteLanguage());
-  // },
 
   getComponent(nextState, cb) {
     /*  Webpack - use 'require.ensure' to create a split point

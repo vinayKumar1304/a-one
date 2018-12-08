@@ -11,43 +11,42 @@ import { getLocalStorage } from '../components/Helpers';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
-
-    export function checkPageRestriction (nextState, replace, callback) {
-      let access = false;
-      let localStorage = {};
-      const path = require('../config/Config').Url;
-      const pathname = nextState.location.pathname;
-      switch (pathname) {
-        case path.LOGIN:
-        case '/':
-          access = true;
-          break;
-        case path.DASHBOARD:
-          let user = getLocalStorage('user');
-          access = (user.isLogin !== false) ? true : false;
-          break;
-      }
-      if (access === false) {
-        console.log('access denied !!!');
-        window.location.href = `/`;
-      } else {
-        return callback()
-      }
-    }
+    //
+    // export function checkPageRestriction (nextState, replace, callback) {
+    //   let access = false;
+    //   let localStorage = {};
+    //   const path = require('../config/Config').Url;
+    //   const pathname = nextState.location.pathname;
+    //   switch (pathname) {
+    //     case path.LOGIN:
+    //     case '/':
+    //       access = true;
+    //       break;
+    //     case path.DASHBOARD:
+    //       let user = getLocalStorage('user');
+    //       access = (user.isLogin !== false) ? true : false;
+    //       break;
+    //   }
+    //   if (access === false) {
+    //     console.log('access denied !!!');
+    //     window.location.href = `/`;
+    //   } else {
+    //     return callback()
+    //   }
+    // }
 
 // export const indexRoutes = [{ path: "/", component: Dashboard }];
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : Home,
-  onEnter     : checkPageRestriction,
   childRoutes : [
     LoginRoute(store),
     RegisterRoute(store),
     CounterRoute(store),
     // DashboardRoute(store),
     DashboardNewRoute(store),
-    
+
   ]
 })
 

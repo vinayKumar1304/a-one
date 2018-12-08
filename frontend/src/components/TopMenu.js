@@ -13,13 +13,15 @@ import {
   DropdownItem, Col
 } from 'reactstrap';
 import './TopMenu.scss';
+import {removeLocalStorage, getLocalStorage} from './Helpers'
+import { browserHistory } from 'react-router'
 
 class TopMenu extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
+      loggedIn: false,
       isOpen: false,
       isLoggedIn: false
     };
@@ -29,12 +31,19 @@ class TopMenu extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
-  clickLogout(){
-    console.log("logged IN");
-    this.state({
-      isLoggedIn: true
-    })
+
+  async componentWillMount() {
+    const user = await getLocalStorage('user');
+    if (user !== null && typeof user.email !== 'undefined') {
+      this.setState({loggedIn: true});
+    }
   }
+
+  logout () {
+    removeLocalStorage('user');
+    browserHistory.push('/login')
+  }
+
   render() {
     return (
       <Navbar color="primary" expand="lg" className='top-menu light2' fixed="top">
@@ -62,21 +71,22 @@ class TopMenu extends React.Component {
                   </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown> */}
-            
-            {/* {location.pathname === "/login" || location.pathname === "/" ?  */}
+
+            {this.state.loggedIn === false &&
               <NavItem>
-                <NavLink href="/login" onClick={() => this.props.clickLogout()}>
-                  {this.props.isLoggedIn? 'Logout' : 'Login'}
-                </NavLink> 
+                <NavLink href="/login">Login</NavLink>
               </NavItem>
-            {/* :  */}
-              {/* <NavItem>
-                <NavLink href="/">Logout</NavLink>
-              </NavItem> */}
-            {/* } */}
-            <NavItem>
-              <NavLink href="/register">Register</NavLink>
-            </NavItem>
+            }
+            {this.state.loggedIn === false &&
+              <NavItem>
+                <NavLink href="/register">Register</NavLink>
+              </NavItem>
+            }
+            {this.state.loggedIn === true &&
+              <NavItem>
+                <NavLink href="/register" onClick={() => this.logout()}>Logout</NavLink>
+              </NavItem>
+            }
           </Nav>
         </Collapse>
       </Navbar>

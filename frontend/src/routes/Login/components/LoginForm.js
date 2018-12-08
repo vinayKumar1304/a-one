@@ -1,34 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col, Form, Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input } from 'reactstrap';
-import { Link } from 'react-router/lib';
-import { reduxForm, Field } from 'redux-form';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Row, Col, Form, Modal } from 'reactstrap'
+import { Link } from 'react-router/lib'
+import { Field } from 'redux-form'
 
-import RenderField from 'components/RenderField';
-import SubmitButtons from 'components/SubmitButtons';
-import './Login.scss';
-import ForgotPassword from './ForgotPassword';
+import RenderField from 'components/RenderField'
+import SubmitButtons from 'components/SubmitButtons'
+import './Login.scss'
+import ForgotPassword from './ForgotPassword'
 
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
-      modal: false,
-    };
-    this.toggle = this.toggle.bind(this);
+      modal: false
+    }
+    this.toggle = this.toggle.bind(this)
   }
 
-  toggle() {
+  toggle () {
     this.setState({
       modal: !this.state.modal
-    });
+    })
   }
- 
-  
-  render() {
-    const { handleSubmit } = this.props;
+
+  render () {
+    const { handleSubmit } = this.props
     return (
-      <div className="container">
+      <div className='container'>
         <Row>
           <div className='col-12 col-sm-6 col-md-6 login-box mx-auto'>
             <h4 className='title col-12 col-sm-12 col-xl-12 text-center mt-3 mb-2'><span>Log in</span></h4>
@@ -56,12 +55,11 @@ class LoginForm extends React.Component {
                 </Row>
               </div>
               <Col className='col-12 col-sm-12 col-xl-12 text-center my-2 forgot-wrapper'>
-                <Link to="" className="btn btn-link" onClick={this.toggle}>{this.props.buttonLabel}{'Forgot your password'} ?</Link>
-                <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle} className={this.props.className}>
+                <Link to='' className='btn btn-link' onClick={this.toggle}>{'Forgot your password'} ?</Link>
+                <Modal isOpen={this.state.modal} fade={false} toggle={this.toggle}>
                   <ForgotPassword
                     userForgotPassword={this.props.userForgotPassword}
                     toggle={this.toggle}
-                    loadingImage={this.props.loadingImage}
                   />
                 </Modal>
               </Col>
@@ -76,17 +74,14 @@ class LoginForm extends React.Component {
           </div>
         </Row>
       </div>
-    );
+    )
   }
 }
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool
-};
+  submitting: PropTypes.bool,
+  userForgotPassword: PropTypes.function
+}
 
-// LoginForm.contextTypes = {
-//   // t: PropTypes.func.isRequired
-// }
-
-export default LoginForm;
+export default LoginForm
