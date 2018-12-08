@@ -1,56 +1,117 @@
-// // ------------------------------------
-// // Constants
-// // // ------------------------------------
-// // export const COUNTER_INCREMENT = 'COUNTER_INCREMENT'
-// // export const COUNTER_DOUBLE_ASYNC = 'COUNTER_DOUBLE_ASYNC'
+import axios from 'axios'
+import { browserHistory } from 'react-router'
 
-// // // ------------------------------------
-// // // Actions
-// // // ------------------------------------
-// // export function increment (value = 1) {
-// //   return {
-// //     type    : COUNTER_INCREMENT,
-// //     payload : value
-// //   }
-// // }
+// import querystring from 'querystring';
 
-// // /*  This is a thunk, meaning it is a function that immediately
-// //     returns a function for lazy evaluation. It is incredibly useful for
-// //     creating async actions, especially when combined with redux-thunk! */
+import { Config } from '../../../config/Config'
+import {saveLocalStorage, getLocalStorage} from '../../../components/Helpers'
 
-// // export const doubleAsync = () => {
-// //   return (dispatch, getState) => {
-// //     return new Promise((resolve) => {
-// //       setTimeout(() => {
-// //         dispatch({
-// //           type    : COUNTER_DOUBLE_ASYNC,
-// //           payload : getState().counter
-// //         })
-// //         resolve()
-// //       }, 200)
-// //     })
-// //   }
-// // }
+// ------------------------------------
+// Constants
+// ------------------------------------
 
-// // export const actions = {
-// //   increment,
-// //   doubleAsync
-// // }
+export const REGISTER_REQUEST = 'REGISTER_REQUEST'
+export const REGISTER_RESPONSE = 'REGISTER_RESPONSE'
+export const REGISTER_ERROR = 'REGISTER_RESPONSE'
 
-// // // ------------------------------------
-// // // Action Handlers
-// // // ------------------------------------
-// // const ACTION_HANDLERS = {
-// //   [COUNTER_INCREMENT]    : (state, action) => state + action.payload,
-// //   [COUNTER_DOUBLE_ASYNC] : (state, action) => state * 2
-// // }
+// ------------------------------------
+// Actions
+// ------------------------------------
 
-// // // ------------------------------------
-// // // Reducer
-// // // ------------------------------------
-// // const initialState = 0
-export default function Register () {
+export function registerRequest () {
+  return {
+    type: REGISTER_REQUEST,
+    processing: true
+  }
+}
+
+export function registerResponse (payload) {
+  return {
+    type: REGISTER_RESPONSE,
+    error: false
+  }
+}
+
+export function registerError (payload) {
+  return {
+    type: REGISTER_ERROR,
+    processing: false,
+    error: true
+  }
+}
+
+// --------------------------------------------
+// Action Creator
+// --------------------------------------------
+
+export const signup = (values) => {
+  return (dispatch) => {
+    dispatch(registerRequest())
+    axios({
+	    method: 'POST',
+	    url: `${Config.API.BASE_URL}/register`,
+	    data: {
+				first_name: values.first_name,
+				last_name: values.last_name,
+				email: values.email,
+				password: values.password,
+				gender: values.gender,
+				mobile: values.mobile,
+				dob: values.dob,
+				status: values.status
+			},
+	    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+	    }
+    }).then(response => {
+			dispatch(registerResponse(response))
+			browserHistory.push('/dashboardNew')
+		}).catch(err => {
+			console.log('error in register', err)
+      dispatch(registerError())
+		})
+	}
+}
+
+// ------------------------------------
+// Action Handlers
+// ------------------------------------
+
+const ACTION_HANDLERS = {
+	[REGISTER_REQUEST]: (state, action) => {
+    return {
+      ...state,
+      processing: action.processing
+    };
+  },
+  [REGISTER_RESPONSE]: (state, action) => {
+    return {
+      ...state,
+			processing: action.processing,
+      user: action.user
+    };
+  },
+  [REGISTER_ERROR]: (state, action) => {
+    return {
+      ...state,
+			processing: action.processing,
+      error: action.error
+    };
+  },
+}
+
+// ------------------------------------
+// Reducer
+// ------------------------------------
+
+const initialState = {
+  error: false,
+  processing: false,
+  user: {}
+}
+
+export default function registerReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
-
-  return handler ? handler(state, action) : state;
+  return handler ? handler(state, action) : state
 }
