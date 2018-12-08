@@ -7,8 +7,6 @@ module.exports = {
     sql.query("INSERT INTO user (first_name, last_name, email, password, gender, mobile, dob, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [user.first_name, user.last_name, user.email, user.password, user.gender,
     user.mobile, user.dob, user.status], (err, res) => {
-      console.log(err);
-      console.log(res);
       if (err) {
         console.log('create user query', err);
         result(err, null);
