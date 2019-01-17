@@ -4,10 +4,8 @@ import Home from './Home';
 import CounterRoute from './Counter';
 import LoginRoute from './Login';
 import RegisterRoute from './Register';
-// import DashboardRoute from './Dashboard';
 import DashboardNewRoute from './Dashboard';
 import { getLocalStorage } from '../components/Helpers';
-// import Dashboard from "../layouts/PageLayout/UserDashboard.js";
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */

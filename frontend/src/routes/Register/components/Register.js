@@ -6,6 +6,7 @@ import { Row, Col, Label, Input, FormGroup, Button } from 'reactstrap';
 import Header from '../../../components/Header';
 import RenderField from 'components/RenderField';
 import SubmitButtons from 'components/SubmitButtons';
+import {signup} from '../modules/register';
 import './Register.scss';
 
 const contact = ['Mobile','Office','Home'];
@@ -13,13 +14,28 @@ const contact = ['Mobile','Office','Home'];
 class Register extends React.Component {
   constructor(props) {
     super(props);
-    console.log("vinay");
+    this.state = {
+      // Firstname: null,
+      // Lastname: null,
+      // email: null,
+      // password: null,
+      // formErrors: {
+      //   Firstname: "",
+      //   Lastname: "",
+      //   email: "",
+      //   password: "",
+      // }
+    };
+    this.register = this.register.bind(this);
+  }
+  
+  register() {
+    alert('sfkngkjnewbguf')
+    this.props.signup();
   }
 
   render() {
-
-    let mobileOptions = ['Mobile', 'Home', 'Office'];
-    const { handleSubmit, onSubmit } = this.props;
+    const {handleSubmit } = this.props;
     return (
       <div>
         <Header />
@@ -27,7 +43,7 @@ class Register extends React.Component {
       <Row>
       <div className='col-12 col-sm-6 col-md-6 mx-auto register-box'>
         <h4 className='title col-12 col-sm-12 col-xl-12'><span>Please Register below</span></h4>
-        <Form className='mt-2 text-left' onSubmit={handleSubmit}>
+        <Form className='mt-2 text-left' onSubmit={handleSubmit(this.register)}>
           <div className='col-12 col-sm-12 col-xl-12 box-bg py-2'>
             <Row>
               <Col className='text-center col-12 col-sm-12 col-xl-12 mb-1'>
@@ -55,6 +71,24 @@ class Register extends React.Component {
                       type='text'
                       component={RenderField}
                       label='Last Name'
+                    />
+                  </Col>
+                  <Col className='text-center col-6 col-sm-6 col-xl-6 pl-1'>
+                    <Field
+                      name='email'
+                      className='form-control'
+                      type='email'
+                      component={RenderField}
+                      label='email'
+                    />
+                  </Col>
+                  <Col className='text-center col-6 col-sm-6 col-xl-6 pl-1'>
+                    <Field
+                      name='Password'
+                      className='form-control'
+                      type='password'
+                      component={RenderField}
+                      label='Password'
                     />
                   </Col>
                 </Row>
@@ -93,5 +127,5 @@ Register.propTypes = {
 };
 
 export default reduxForm({
-  form: 'simple'  // a unique identifier for this form
+  form: 'Register'  // a unique identifier for this form
 })(Register)

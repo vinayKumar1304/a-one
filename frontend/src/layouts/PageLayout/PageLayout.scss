@@ -7,6 +7,11 @@ html * {
   padding-top: 4rem;
 }
 
+@font-face {
+  font-family: "nexa";
+  src: url("../../assets/font/nexa.woff2") format("woff2");
+}
+
 .page-layout__nav-item--active {
   font-weight: bold;
   text-decoration: underline;
@@ -117,4 +122,20 @@ body {
   & .card-title, a{
     color: #fff;
   }
+}
+.bg-screen{
+  background: #f2f6f9;
+}
+.description{
+  color: #41484f;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+.heading{
+  font-family: "Nexa",Helvetica,Arial,sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-transform: uppercase;
 }

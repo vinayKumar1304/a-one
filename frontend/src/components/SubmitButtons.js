@@ -5,6 +5,7 @@ import { Button, Col, Row} from 'reactstrap';
 // import './SubmitButton.scss';
 
 const SubmitButtons = (props) => {
+  console.log("submit")
   const {
     submitLabel = 'Save',
     submitting = props.submitting

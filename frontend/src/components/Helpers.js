@@ -1,11 +1,3 @@
-// import ReactPixel from 'react-facebook-pixel';
-
-// import { translations } from '../translations';
-
-/*
-*    Global method (saveLocalStorage, getLocalStorage & removeLocalStorage, getAllArchive). use these *    helper method to store, get and remove, getAllArchive the value from localstorage.
-*/
-
 export const saveLocalStorage = (key, values) => {
   var data = [];
   data.push(values);

@@ -1,4 +1,6 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import { validate } from '../../Login/components/LoginValidation';
 // import { increment, doubleAsync } from '../modules/counter'
 
 /*  This is a container component. Notice it does not contain any JSX,
@@ -7,19 +9,24 @@ import { connect } from 'react-redux'
     component - in this case, the counter:   */
 
 import Register from '../components/Register';
+import { signup} from '../modules/register';
 
 /*  Object of action creators (can also be function that returns object).
     Keys will be passed as props to presentational components. Here we are
     implementing our wrapper around increment; the component doesn't care   */
 
-// const mapDispatchToProps = {
-//   increment : () => increment(1),
-//   doubleAsync
-// }
+const mapDispatchToProps = (dispatch) => {
+    return ({
+        signup: (value) => dispatch(signup(value))
+    });
+};
 
-// const mapStateToProps = (state) => ({
-//   counter : state.counter
-// })
+const mapStateToProps = (state) => ({
+    // return ({
+    //     // showRegisterForm: state.Login.showRegisterForm,
+    //     // userRegistrationDetail: state.Login.userRegistrationDetail
+    // });
+});
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:
 
@@ -35,4 +42,9 @@ import Register from '../components/Register';
     Selectors are composable. They can be used as input to other selectors.
     https://github.com/reactjs/reselect    */
 
-export default Register;
+    let RegisterReduxForm = reduxForm({
+        form: 'Regieter',
+        validate
+      })(Register);
+      
+      export default connect(mapStateToProps, mapDispatchToProps)(RegisterReduxForm);

@@ -35,7 +35,6 @@ class TopMenu extends React.Component {
   }
 
   async componentWillMount(){
-    console.log('coomeeksdkfnksjgnfj');
     const user = await getLocalStorage('user');
     if (user !== null && typeof user.email !== 'undefined') {
       this.setState({loggedIn: true});
@@ -50,7 +49,7 @@ class TopMenu extends React.Component {
 
   render() {
     return (
-      <Navbar color="primary" expand="lg" className='top-menu light2' fixed="top">
+      <Navbar color="primary" expand="lg" className='top-menu light2 scrolling-navbar' fixed="top">
         <NavbarBrand href="/">A-one Enterprises</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>

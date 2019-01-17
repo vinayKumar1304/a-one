@@ -1,10 +1,10 @@
-import axios from 'axios'
-import { browserHistory } from 'react-router'
+import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 // import querystring from 'querystring';
 
-import { Config } from '../../../config/Config'
-import {saveLocalStorage, getLocalStorage} from '../../../components/Helpers'
+import { Config } from '../../../config/Config';
+import {saveLocalStorage, getLocalStorage} from '../../../components/Helpers';
 
 // ------------------------------------
 // Constants
@@ -19,6 +19,7 @@ export const REGISTER_ERROR = 'REGISTER_RESPONSE'
 // ------------------------------------
 
 export function registerRequest () {
+  alert("registerRequest");
   return {
     type: REGISTER_REQUEST,
     processing: true
@@ -46,7 +47,8 @@ export function registerError (payload) {
 
 export const signup = (values) => {
   return (dispatch) => {
-    dispatch(registerRequest())
+    alert('come');
+    dispatch(registerRequest());
     axios({
 	    method: 'POST',
 	    url: `${Config.API.BASE_URL}/register`,
@@ -65,9 +67,11 @@ export const signup = (values) => {
         'Content-Type': 'application/json'
 	    }
     }).then(response => {
+      alert("vinay");
 			dispatch(registerResponse(response))
 			browserHistory.push('/dashboardNew')
 		}).catch(err => {
+      alert("kumar");
 			console.log('error in register', err)
       dispatch(registerError())
 		})
@@ -80,6 +84,7 @@ export const signup = (values) => {
 
 const ACTION_HANDLERS = {
 	[REGISTER_REQUEST]: (state, action) => {
+    alert("actionhandler");
     return {
       ...state,
       processing: action.processing
@@ -109,6 +114,10 @@ const initialState = {
   error: false,
   processing: false,
   user: {}
+}
+
+const actions = {
+  signup
 }
 
 export default function registerReducer (state = initialState, action) {
