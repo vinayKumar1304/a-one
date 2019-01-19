@@ -7,18 +7,16 @@ import RenderField from 'components/RenderField';
 class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    email: '',
-    isDisabled: true
-    }
-    console.log("forgot password", this.state.isDisabled );
-    console.log("forgot pzDasdasdasasassword", this.state.email );
     this.getEmail = this.getEmail.bind(this);
     this.sendMail = this.sendMail.bind(this);
+
+    this.state = {
+      email: '',
+      isDisabled: true
+    }
   }
 
   getEmail(e) {
-    console.log("get email;", e);
     let email = e.target.value;
     this.setState({email: email})
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -30,7 +28,6 @@ class ForgotPassword extends React.Component {
   }
 
   sendMail() {
-    console.log('sent email', email);
     let email = this.state.email;
     this.props.loadingImage(true);
     this.props.userForgotPassword(email);
@@ -92,7 +89,6 @@ class ForgotPassword extends React.Component {
   };
 }
 
-ForgotPassword.propTypes = {
+ForgotPassword.propTypes = {};
 
-};
 export default ForgotPassword;

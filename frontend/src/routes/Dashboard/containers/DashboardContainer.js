@@ -1,16 +1,14 @@
 import { connect } from 'react-redux';
 
 import Dashboard from '../components/Dashboard';
-
-const mapDispatchToProps = (dispatch) => {
-  return({
-    dashboardProps: (status) => dispatch(dashboardProps(status))
-  })
-};
+import {} from '../modules/dashboard';
 
 const mapStateToProps = (state) => {
-    return ({
-    });
+  return ({});
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return({})
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

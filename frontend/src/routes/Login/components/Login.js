@@ -1,12 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import LoginForm from './LoginForm'
-import Header from '../../../components/Header'
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import LoginForm from './LoginForm';
+import Header from '../../../components/Header';
 
 class Login extends React.Component {
   constructor (props) {
-    super(props)
-    this.login = this.login.bind(this)
+    super(props);
+    this.login = this.login.bind(this);
+    this.userForgotPassword = this.userForgotPassword.bind(this);
   }
 
   userForgotPassword () {
@@ -35,8 +37,6 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
-  login: PropTypes.function
-}
+Login.propTypes = {}
 
 export default Login

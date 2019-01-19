@@ -1,31 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Row, Col, Form, Modal } from 'reactstrap'
-import { Link } from 'react-router/lib'
-import { Field } from 'redux-form'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Row, Col, Form, Modal } from 'reactstrap';
+import { Link } from 'react-router/lib';
+import { Field } from 'redux-form';
 
-import RenderField from 'components/RenderField'
-import SubmitButtons from 'components/SubmitButtons'
-import './Login.scss'
-import ForgotPassword from './ForgotPassword'
+import RenderField from 'components/RenderField';
+import SubmitButtons from 'components/SubmitButtons';
+import ForgotPassword from './ForgotPassword';
+import './Login.scss';
 
 class LoginForm extends React.Component {
   constructor (props) {
     super(props)
+    this.toggle = this.toggle.bind(this);
+
     this.state = {
       modal: false
     }
-    this.toggle = this.toggle.bind(this)
   }
 
   toggle () {
-    this.setState({
-      modal: !this.state.modal
-    })
+    this.setState({modal: !this.state.modal});
   }
 
   render () {
-    const { handleSubmit } = this.props
+    const { handleSubmit } = this.props;
     return (
       <div className='container'>
         <Row>
@@ -81,7 +80,7 @@ class LoginForm extends React.Component {
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
-  userForgotPassword: PropTypes.function
+  userForgotPassword: PropTypes.func
 }
 
-export default LoginForm
+export default LoginForm;

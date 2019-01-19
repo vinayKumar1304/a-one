@@ -10,16 +10,22 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem, Col
+  DropdownItem, 
+  Col
 } from 'reactstrap';
-import './TopMenu.scss';
-import {removeLocalStorage, getLocalStorage} from './Helpers'
 import { browserHistory } from 'react-router'
+
+import {
+  removeLocalStorage,
+  getLocalStorage
+} from './Helpers'
+import './TopMenu.scss';
 
 class TopMenu extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+
     this.state = {
       loggedIn: false,
       isOpen: false,
@@ -29,9 +35,7 @@ class TopMenu extends React.Component {
   }
 
   toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+    this.setState({isOpen: !this.state.isOpen});
   }
 
   async componentWillMount(){

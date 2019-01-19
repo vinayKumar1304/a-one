@@ -9,6 +9,7 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
+
 import BannerImg from '../assets/img/success-banner.jpg';
 
 const items = [
@@ -67,23 +68,6 @@ class Slider extends React.Component{
 
   render() {
     const { activeIndex } = this.state;
-
-    const slides = items.map((item) => {
-      return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        >
-          <img src={item.src} alt={item.altText} className="img-fluid"/>
-          <CarouselCaption 
-            captionText={item.caption} 
-            captionHeader={item.caption} 
-          />
-        </CarouselItem>
-      );
-    });
-
     return (
       <Carousel
         activeIndex={activeIndex}
@@ -91,7 +75,19 @@ class Slider extends React.Component{
         previous={this.previous}
       >
         <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-        {slides}
+        {items.map((item) => (
+          <CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={item.altText}
+          >
+            <img src={item.src} alt={item.altText} className="img-fluid"/>
+            <CarouselCaption 
+              captionText={item.caption} 
+              captionHeader={item.caption} 
+            />
+          </CarouselItem>  
+        ))}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
       </Carousel>

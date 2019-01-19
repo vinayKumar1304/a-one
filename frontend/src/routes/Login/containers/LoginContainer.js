@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import Login from '../components/Login';
-import { validate } from '../components/LoginValidation';
 
 import {
     login
@@ -14,14 +13,10 @@ const mapDispatchToProps = (dispatch) => {
   })
 }
 
-const mapStateToProps = (state) => ({
-  // user: state.Login.user,
-});
+const mapStateToProps = (state) => ({});
 
-// export default Login;
 let LoginReduxForm = reduxForm({
   form: 'Login',
-  validate
 })(Login)
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginReduxForm)
